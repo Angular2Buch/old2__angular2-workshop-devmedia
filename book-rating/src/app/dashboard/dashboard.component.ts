@@ -12,6 +12,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.books = [
         new Book('NG1', 'schön wars'),
-        new Book('NG2', 'die Zukunft jetzt')];
+        new Book('NG2', 'die Zukunft jetzt', 5)];
+  }
+
+  reorderBooks(book: Book) {
+    this.books.sort((a, b) => b.rating - a.rating);
   }
 }
