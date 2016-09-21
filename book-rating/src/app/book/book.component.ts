@@ -13,7 +13,6 @@ export class BookComponent {
   rateUp() {
     this.book.rateUp();
     this.rated.emit(this.book);
-    console.log('ende!')
   }
 
   rateDown() {
