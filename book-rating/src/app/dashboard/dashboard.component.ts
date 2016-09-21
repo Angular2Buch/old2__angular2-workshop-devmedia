@@ -15,7 +15,12 @@ export class DashboardComponent implements OnInit {
         new Book('NG2', 'die Zukunft jetzt', 5)];
   }
 
-  reorderBooks(book: Book) {
+  addBook(book: Book) {
+    this.books.push(book);
+    this.reorderBooks();
+  }
+
+  reorderBooks() {
     this.books.sort((a, b) => b.rating - a.rating);
   }
 }
