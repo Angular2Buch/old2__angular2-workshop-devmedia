@@ -1,0 +1,9 @@
+input.ng-dirty.ng-valid,
+textarea.ng-dirty.ng-valid {
+    border-left: 4px solid greenyellow;
+}
+
+input.ng-dirty.ng-invalid,
+textarea.ng-dirty.ng-invalid {
+    border-left: 4px solid orangered;
+}

@@ -8,10 +8,14 @@ import { Book } from '../shared/book';
 })
 export class CreateBookComponent {
   @Output() bookCreated = new EventEmitter<Book>();
+  book: Book;
 
-  add(title: HTMLInputElement, description: HTMLInputElement) {
-    let book = new Book(title.value, description.value);
-    this.bookCreated.emit(book);
-    title.value = description.value = '';
+  constructor() {
+    this.book = Book.empty();
+  }
+
+  submit() {
+    this.bookCreated.emit(this.book);
+    this.book = Book.empty();
   }
 }
