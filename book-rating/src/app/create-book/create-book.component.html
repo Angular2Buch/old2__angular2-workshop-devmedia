@@ -20,18 +20,17 @@
           class="form-control"
           name="description"
           #description="ngModel"
+          required
           minlength="3"></textarea></div>
     </div>
     <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
       Der Beschreibung muss mindestens drei Zeichen lang sein.
     </div>
 
-    {{ book | json }}
-
     <div class="form-group">
       <button
         [disabled]="!bookCreation.valid"
-        (click)="submit()"
+        (click)="submit(bookCreation); bookCreation.reset()"
         class="btn btn-danger">Submit</button>
     </div>
   </div>
