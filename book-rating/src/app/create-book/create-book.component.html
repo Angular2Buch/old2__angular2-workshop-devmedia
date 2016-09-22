@@ -26,6 +26,8 @@
       Der Beschreibung muss mindestens drei Zeichen lang sein.
     </div>
 
+    {{ book | json }}
+
     <div class="form-group">
       <button
         [disabled]="!bookCreation.valid"
