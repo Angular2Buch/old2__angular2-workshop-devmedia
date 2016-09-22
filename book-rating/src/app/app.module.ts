@@ -22,9 +22,8 @@ import { CreateBookComponent } from './create-book/create-book.component';
   ],
   providers: [
     {
-      provide: 'MY_BOOK_MONKEY_URL', useFactory: () => {
-        return 'http://book-monkey2-api.angular2buch.de/books';
-      }
+      provide: 'MY_BOOK_MONKEY_URL',
+      useValue: 'http://book-monkey2-api.angular2buch.de/books'
     }
   ],
   bootstrap: [AppComponent]

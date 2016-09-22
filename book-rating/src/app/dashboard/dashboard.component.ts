@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
         this.books = response.json().map(json =>
           new Book(json.title, json.description, json.rating)
         );
+        this.reorderBooks();
       });
   }
 
