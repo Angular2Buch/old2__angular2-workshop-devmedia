@@ -20,7 +20,13 @@ import { CreateBookComponent } from './create-book/create-book.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'MY_BOOK_MONKEY_URL', useFactory: () => {
+        return 'http://book-monkey2-api.angular2buch.de/books';
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

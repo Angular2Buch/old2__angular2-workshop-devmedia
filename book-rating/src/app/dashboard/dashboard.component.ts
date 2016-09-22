@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Book } from '../shared/book';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'br-dashboard',
@@ -9,10 +11,16 @@ import { Book } from '../shared/book';
 export class DashboardComponent implements OnInit {
   books: Book[];
 
+  constructor(private http: Http,
+    @Inject('MY_BOOK_MONKEY_URL') private url: string) { }
+
   ngOnInit() {
-    this.books = [
-        new Book('NG1', 'schön wars'),
-        new Book('NG2', 'die Zukunft jetzt', 5)];
+    this.http.get(this.url)
+      .subscribe(response => {
+        this.books = response.json().map(json =>
+          new Book(json.title, json.description, json.rating)
+        );
+      });
   }
 
   addBook(book: Book) {
