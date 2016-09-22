@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Book } from '../shared/book';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -11,15 +10,12 @@ import 'rxjs/add/operator/map';
 export class DashboardComponent implements OnInit {
   books: Book[];
 
-  constructor(private http: Http,
-    @Inject('MY_BOOK_MONKEY_URL') private url: string) { }
+  constructor(private bs: BookStoreService ) { }
 
   ngOnInit() {
-    this.http.get(this.url)
-      .subscribe(response => {
-        this.books = response.json().map(json =>
-          new Book(json.title, json.description, json.rating)
-        );
+    this.bs.getAll()
+      .subscribe(books => {
+        this.books = books;
         this.reorderBooks();
       });
   }
